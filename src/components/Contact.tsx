@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import React from "react";
 
 const Contact = () => {
   const contactInfo = [
@@ -31,6 +32,33 @@ const Contact = () => {
       subtitle: "Sat: 9AM-4PM"
     }
   ];
+    const [result, setResult] = React.useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "e7eca7f4-ee4b-4408-82f2-2d1dfb665507");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+    }{
+      setResult('')
+    }
+  };
+
 
   return (
     <section id="contact" className="py-20 bg-gradient-to-b from-background to-muted">
@@ -50,46 +78,49 @@ const Contact = () => {
               <CardHeader>
                 <CardTitle className="text-2xl text-primary">Get Your Free Quote</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">First Name</label>
-                    <Input placeholder="AbdulAzeez" />
+              <form onSubmit={onSubmit}>
+                <CardContent className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm font-medium text-foreground mb-2 block">First Name</label>
+                      <Input required placeholder="AbdulAzeez" name="name" />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium text-foreground mb-2 block">Last Name</label>
+                      <Input required placeholder="Babalola" name="name" />
+                    </div>
                   </div>
-                  <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">Last Name</label>
-                    <Input placeholder="Babalola" />
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm font-medium text-foreground mb-2 block">Email</label>
+                      <Input required type="email" name="email" placeholder="moshaaallah@gmail.com" />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium text-foreground mb-2 block">Phone</label>
+                      <Input required type="tel" name="phone" placeholder="+2349013562269" />
+                    </div>
                   </div>
-                </div>
-                
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">Email</label>
-                    <Input type="email" placeholder="moshaaallah@gmail.com" />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">Phone</label>
-                    <Input type="tel" placeholder="+2349013562269" />
-                  </div>
-                </div>
 
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">Project Type</label>
-                  <Input placeholder="e.g., Kitchen Renovation, Custom Furniture, New Construction" />
-                </div>
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-2 block">Project Type</label>
+                    <Input required name="project" placeholder="e.g., Kitchen Renovation, Custom Furniture, New Construction" />
+                  </div>
 
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">Project Details</label>
-                  <Textarea 
-                    placeholder="Tell us about your project, timeline, and any specific requirements..."
-                    className="min-h-32"
-                  />
-                </div>
-
-                <Button variant="hero" size="lg" className="w-full text-lg py-6">
-                  Request Free Consultation
-                </Button>
-              </CardContent>
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-2 block">Project Details</label>
+                    <Textarea 
+                    name="message" required
+                      placeholder="Tell us about your project, timeline, and any specific requirements..."
+                      className="min-h-32"
+                    />
+                  </div>
+                    <span>{result}</span>
+                  <Button variant="hero" size="lg" className="w-full text-lg py-6">
+                    Request Free Consultation
+                  </Button>
+                </CardContent>
+              </form>
             </Card>
           </div>
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/logo.jpg"
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,8 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2" onClick={() => scrollToSection("home")}>
-            <div className="w-8 h-8 bg-gradient-to-br from-wood-warm to-accent rounded"></div>
+            <img src={logo} alt="logo" className="w-10 h-10" />
+            {/* <div className="w-8 h-8 bg-gradient-to-br from-wood-warm to-accent rounded"></div> */}
             <span className="text-xl font-bold text-blue-950">Adams Gs.</span>
           </div>
 

@@ -1,3 +1,5 @@
+import logo from "@/assets/logo.jpg"
+
 const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground py-12">
@@ -5,7 +7,8 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-accent to-wood-warm rounded"></div>
+                <img src={logo} alt="logo" className="w-10 h-10" />
+              {/* <div className="w-8 h-8 bg-gradient-to-br from-accent to-wood-warm rounded"></div> */}
               <span className="text-xl font-bold">Adams Gs.</span>
             </div>
             <p className="text-primary-foreground/80 mb-4 max-w-md">
