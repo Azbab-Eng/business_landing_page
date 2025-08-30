@@ -31,7 +31,7 @@ import i6 from '@/assets/int6.jpg'
 interface Project {
   id: number;
   title: string;
-  category: "furniture" | "sofa" | "interior" | "construction";
+  category: string;
   image: string;
   description: string;
   gTitle:"Interior Furniture"|"Project Management";
@@ -39,18 +39,18 @@ interface Project {
 }
 
 const projects: Project[] = [
-  { id: 1,gTitle:"Interior Furniture", title: "Modern Room TV console",description: ". Durable and modern room furniture designed to fit any lifestyle and interior style.", category: "furniture", image: fur1 },
+  { id: 1,gTitle:"Interior Furniture", title: "Modern Room TV console",description: ". Durable and modern room furniture designed to fit any lifestyle and interior style.", category: "Tv Console", image: fur1 },
   { id: 2,gTitle:"Interior Furniture", title: "Modern Sofa Set", category: "sofa",description: "Adding space and value with a stunning two-story extension.", image: sf},
   { id: 3,gTitle:"Project Management", title: "Office Construction",description: "A beautiful family home built from the ground up with sustainable materials.", category: "construction", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c" },
-  { id: 4,gTitle:"Interior Furniture", title: "Living Room Renovation",description: ". Our room furniture blends storage, comfort, and design to create a perfect living environment.", category: "interior", image: int1 },
-  { id: 5,gTitle:"Interior Furniture",description: "Well Tv Design that transform your rooms with beauty and function.", title: "Tv & Elegant Room Furniture", category: "furniture", image: i1 },
-  { id: 6,gTitle:"Interior Furniture", title: "Modern Sitting",description: " Upgrade your living or office space with our premium sitting furniture.", category: "furniture", image: fur2 },
-  { id: 7,gTitle:"Interior Furniture", title: "Tv Console Model", category: "interior",description:"Durable and modern room furniture designed to fit any lifestyle and interior style.", image: i2 },
+  { id: 4,gTitle:"Interior Furniture", title: "Living Room Renovation",description: ". Our room furniture blends storage, comfort, and design to create a perfect living environment.", category: "Full Room Setting", image: int1 },
+  { id: 5,gTitle:"Interior Furniture",description: "Well Tv Design that transform your rooms with beauty and function.", title: "Tv & Elegant Room Furniture", category: "Tv Console", image: i1 },
+  { id: 6,gTitle:"Interior Furniture", title: "Modern Sitting",description: " Upgrade your living or office space with our premium sitting furniture.", category: "Tv Console", image: fur2 },
+  { id: 7,gTitle:"Interior Furniture", title: "Tv Console Model", category: "Tv Console",description:"Durable and modern room furniture designed to fit any lifestyle and interior style.", image: i2 },
   { id: 8,gTitle:"Interior Furniture", title: "Comfortable & Luxury Sofas",description :"Discover our sofas designed for ultimate relaxation and timeless elegance.", category: "sofa", image: sf1 },
   { id: 9,gTitle:"Project Management", title: "Living Room Renovation",description: "Bespoke room furniture designed for relax and style..", category: "construction", image: int4 },
-  { id: 10,gTitle:"Interior Furniture",description: "Perfect for homes, lounges, and workplaces.", title: "Premium Bed Frame", category: "furniture", image: i3 },
+  { id: 10,gTitle:"Interior Furniture",description: "Perfect for homes, lounges, and workplaces.", title: "Premium Bed Frame", category: "Bed Frame", image: i3 },
   {id: 11,gTitle:"Interior Furniture", title: "Modern Sofa Collections",description: "Discover our sofas designed for ultimate relaxation and timeless elegance.", category: "sofa", image: sf4 },
-  { id: 12,gTitle:"Interior Furniture", title: "Office Relax Room",description: "Bespoke office furniture designed for productivity and style.", category: "interior", image: i4 },
+  { id: 12,gTitle:"Interior Furniture", title: "Office Relax Room",description: "Bespoke office furniture designed for productivity and style.", category: "Bed Frame", image: i4 },
 ];
 
 const gTitles = ["all", "Interior Furniture", "Project Management"] as const;
